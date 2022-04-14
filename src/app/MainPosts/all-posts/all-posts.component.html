@@ -1,0 +1,17 @@
+<h2 class="title" [title]="'Posts list'">Facebook Posts</h2>
+<div class="posts-container">
+    
+    <p [ngStyle]="notFoundStyle()"
+    *ngIf="posts.length === 0; else lessPosts">No record found</p>
+    <ng-template #lessPosts>
+        <app-each-post
+        *ngFor="let post of posts;index as i;first as first; last as last; odd as odd; even as even"
+        [ngClass]="even ? 'even-cont': 'odd-cont'"
+        [post]="post"
+        (postDelete)="handleDeletePost($event)"
+        [first]="first"
+        [last]="last"
+        [index]="i"
+        ></app-each-post>
+    </ng-template>
+</div>

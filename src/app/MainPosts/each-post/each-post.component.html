@@ -1,0 +1,14 @@
+<div class="each-post">
+    <h2 [ngStyle]="(first || last) &&{'color': 'purple'}">{{index+1}}.{{ post.title }}
+        </h2>
+        <p>{{ post.content.slice(0,100) }}</p>
+        <div class="buttons-cont">
+            <button class="hits-button">{{ post.likes}}</button>
+            <button class="hits-button">{{ post.hits }}</button>
+        </div>
+        <div class="delete-button-container">
+            <button class="delete-button" (click)="handleDelete()">DELETE POST</button>
+        </div>
+    </div>
+
+<!--[ngStyle]="(first || last) && {'color': 'purple'}" -->
