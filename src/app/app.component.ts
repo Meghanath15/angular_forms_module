@@ -1,5 +1,5 @@
-import { getCurrencySymbol } from '@angular/common';
-import { Component } from '@angular/core';
+import { Form, FormControl , Validators, FormGroup } from '@angular/forms';
+import { Component, OnInit} from '@angular/core';
 
 
 @Component({
@@ -8,7 +8,47 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
   
-export class AppComponent{
+export class AppComponent implements OnInit{
+  userForm: FormGroup;
+ 
+  count:number=0;
+  id:number;
+
+  users:Array<any>=[];
+
+  ngOnInit() : void{}
+
+  constructor(){
+    this.userForm=new FormGroup({
+      name:new FormControl('', Validators.pattern('[a-zA-Z ]*')),
+      age : new FormControl("",[Validators.required, Validators.max(40)]),
+      bio:new FormControl('', Validators.pattern('[a-zA-Z0-9 ]*')),
+      gender: new FormControl(""),
+      
+    })
+
+    console.log(this.userForm);
+    
+    // this.name.valueChanges.subscribe(value=>{
+    //   console.log(value);
+    //   console.log(this.name);
+    // })
+    // this.age.valueChanges.subscribe(value=>{
+    //   console.log(this.age.errors);
+    // })
+
+  }
+
+  handleSubmit(event:MouseEvent){
+    if(this.userForm.invalid){
+      console.log("Invalid name value");
+      return;
+      }
+
+      
+  }
+  
+  /*
   name:string;
   age:number;
   bio:string;
@@ -16,7 +56,11 @@ export class AppComponent{
   count:number=0;
   id:number;
 
+  titleErrors:string;
+
   users:Array<any>=[];
+
+  ngOnInit() : void{}
 
   handleSubmit(){
     this.id=this.count+1;
@@ -42,4 +86,15 @@ export class AppComponent{
     console.log(event.id)
     this.users.filter((user)=>user.id!==this.id);
   }
+  
+  handleKeyUp(event: any){
+    const val=event.target.value.trim();
+    if(val.length===0){
+      this.titleErrors="*Title Required"
+    }
+      else{
+      this.titleErrors=null;
+    }
+    }
+  */
 }

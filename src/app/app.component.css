@@ -67,6 +67,11 @@
     flex-direction: row;
     justify-content: space-evenly;
 }
+.input-errors{
+    color: rgb(252, 60, 2);
+    margin-left: 8vw;
+    font-weight: 12px;
+}
 .clear-btn{
     font-size: 17px;
     width:13vw;
@@ -77,6 +82,10 @@
     font-weight: bold;
     border: none;
     margin-bottom: 10px;
+}
+.btn[disabled]{
+    background-color: blueviolet;
+    cursor: not-allowed;
 }
 button{
     background-color:midnightblue;
