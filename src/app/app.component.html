@@ -1,7 +1,8 @@
-
-
-
-<form class="user-add-form">
+<div class="liked-posts-container">
+  <app-liked-posts></app-liked-posts>
+</div>
+<div hidden> 
+<form class="user-add-form" [formGroup]="userForm">
     <fieldset class="fieldset">
       <legend class="legend">Enter new user details</legend>
       <div class="input-group">
@@ -12,7 +13,7 @@
           name="name"
           placeholder="user name here"
           id="name"
-          formControlName="name"
+          formControlName='name'
                   
  />
        <p *ngIf="userForm.get('name').invalid && userForm.get('name').dirty" class="input-errors">*Invalid Syntax for NAME</p>
@@ -32,7 +33,7 @@
         />
         <p *ngIf="userForm.get('age').errors.max" class="input-errors">*Age should be less than 40 </p>
         <p *ngIf="userForm.get('age').errors.min && userForm.get('age').dirty" class="input-errors">*Age should be greater than 10 </p>
-        <p *ngIf="!userForm.get('age').value && userForm.get('age').dirty" class="input-errors">*Age is required</p>
+        <p *ngIf="!userForm.get('age').errors.actualValue && userForm.get('age').dirty" class="input-errors">*Age is required</p>
       </div>
       <div class="input-group">
         <label for="bio" class="input-label">User BIO</label>
@@ -53,7 +54,7 @@
           class="input-control"
           name="gender"
           id="gender"
-          [(ngModel)]="gender"
+          formControlName="gender"
         >
           <option value="undefined" disabled selected>Select a gender</option>
           <option value="male">Male</option>
@@ -68,6 +69,8 @@
     </div>
     </fieldset>
   </form>
+  </div>
+
 <div class="main-display-cont">
     <div class = "display-container" *ngFor="let user of users">
     <h3>{{user.name}}</h3>

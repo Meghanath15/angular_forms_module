@@ -1,6 +1,6 @@
 import { Form, FormControl , Validators, FormGroup } from '@angular/forms';
 import { Component, OnInit} from '@angular/core';
-
+import { PostServiceService } from './PostService/post-service.service';
 
 @Component({
   selector: 'app-root',
@@ -10,15 +10,20 @@ import { Component, OnInit} from '@angular/core';
   
 export class AppComponent implements OnInit{
   userForm: FormGroup;
- 
-  count:number=0;
-  id:number;
+  
+  postService: PostServiceService;
+
+  // count:number=0;
+  // id:number;
 
   users:Array<any>=[];
 
   ngOnInit() : void{}
 
   constructor(){
+    this.postService=new PostServiceService();
+    
+
     this.userForm=new FormGroup({
       name:new FormControl('', Validators.pattern('[a-zA-Z ]*')),
       age : new FormControl("",[Validators.required, Validators.max(40)]),
@@ -29,7 +34,7 @@ export class AppComponent implements OnInit{
 
     console.log(this.userForm);
     
-    // this.name.valueChanges.subscribe(value=>{
+     //this.userForm.get("age").valueChanges.subscribe(value=>{
     //   console.log(value);
     //   console.log(this.name);
     // })
@@ -40,7 +45,7 @@ export class AppComponent implements OnInit{
   }
 
   handleSubmit(event:MouseEvent){
-    if(this.userForm.invalid){
+  if( this.userForm.invalid){
       console.log("Invalid name value");
       return;
       }

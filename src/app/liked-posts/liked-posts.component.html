@@ -1,0 +1,13 @@
+<div class="liked-main-container">
+<button class="btn like-button" (click)="getLikedItems()">
+    Liked Posts
+</button>
+<div class="liked-posts-list">
+    <div class="liked-post-item" *ngFor="let item of likedItems">
+        
+        <h3>{{item.id}}.{{item.title}}</h3>
+        <p class="likes">Likes: {{item.likes}} </p>
+        <button (click)="handleRemoveLiked(item.id)">Remove</button>
+    </div>
+</div>
+</div>

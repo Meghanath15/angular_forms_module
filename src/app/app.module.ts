@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products/products.component';
 import { EachPostComponent } from './MainPosts/each-post/each-post.component';
 import { AllPostsComponent } from './MainPosts/all-posts/all-posts.component';
+import { LikedPostsComponent } from './liked-posts/liked-posts.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { AllPostsComponent } from './MainPosts/all-posts/all-posts.component';
     ProductsComponent,
     EachPostComponent,
     AllPostsComponent,
+    LikedPostsComponent,
     
   ],
   imports: [

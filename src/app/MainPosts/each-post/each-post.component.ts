@@ -11,7 +11,9 @@ export class EachPostComponent implements OnInit {
   @Input() public first:boolean;
   @Input() public last:boolean;
   @Input() public index:number;
+  
   @Output() public postDelete: EventEmitter<number> = new EventEmitter();
+  @Output() public postLikeButton: EventEmitter<AllProducts> = new EventEmitter();
 
   constructor() {}
 
@@ -19,6 +21,10 @@ export class EachPostComponent implements OnInit {
 
   handleDelete() {
     this.postDelete.emit(this.post.id);
+  }
+
+  handleLikeButton(){
+    this.postLikeButton.emit(this.post)
   }
 
 }

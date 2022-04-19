@@ -1,4 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
+import { PostServiceService } from 'src/app/PostService/post-service.service';
 import { AllProducts } from '../type/product.type';
 
 @Component({
@@ -211,15 +212,15 @@ export class AllPostsComponent implements OnInit {
   ];
   borderBottom = '1px solid rgba(0,0,0,0.2)';
 
-  constructor() {}
-
+  constructor(private postService:PostServiceService) {}
+  
   ngOnInit(): void {}
 
-  handleDeletePost(id: number) {
-    console.log(id);
-    this.posts = this.posts.filter((post) => post.id!== id);
+  handlePostLike(post:AllProducts){
+    this.postService.addItem(post);
   }
-   
+  
+ 
   notFoundStyle():Object{
     return {'background-color' : 'lightgrey',
   'color':'darkblue',

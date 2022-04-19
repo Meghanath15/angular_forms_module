@@ -9,6 +9,7 @@
         [ngClass]="even ? 'even-cont': 'odd-cont'"
         [post]="post"
         (postDelete)="handleDeletePost($event)"
+        (postLikeButton)="handlePostLike($event)"
         [first]="first"
         [last]="last"
         [index]="i"
