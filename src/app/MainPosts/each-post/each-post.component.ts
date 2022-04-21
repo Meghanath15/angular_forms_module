@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {AllProducts} from "../type/product.type";
+import {Router } from '@angular/router';
 
 @Component({
   selector: 'app-each-post',
@@ -11,11 +12,14 @@ export class EachPostComponent implements OnInit {
   @Input() public first:boolean;
   @Input() public last:boolean;
   @Input() public index:number;
-  
+  @Input() public isDetailView:boolean;
+
   @Output() public postDelete: EventEmitter<number> = new EventEmitter();
   @Output() public postLikeButton: EventEmitter<AllProducts> = new EventEmitter();
+  @Output() public posttAdd: EventEmitter<AllProducts> = new EventEmitter();
 
-  constructor() {}
+
+  constructor(private router:Router) {}
 
   ngOnInit(): void {}
 
@@ -25,6 +29,10 @@ export class EachPostComponent implements OnInit {
 
   handleLikeButton(){
     this.postLikeButton.emit(this.post)
+  }
+
+  handleShowDetails() {
+    this.router.navigateByUrl(`/posts/${this.post.id}`, {})
   }
 
 }

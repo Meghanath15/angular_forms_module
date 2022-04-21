@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AllProducts } from '../MainPosts/type/product.type';
+
 import { PostServiceService } from '../PostService/post-service.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class LikedPostsComponent implements OnInit {
   constructor(private postService: PostServiceService) { }
 
   ngOnInit(): void {
+    this.likedItems=this.postService.getItems();
   }
 
   getLikedItems(){

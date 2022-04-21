@@ -1,5 +1,5 @@
 <div class="each-post">
-    <h2 [ngStyle]="(first || last) &&{'color': 'purple'}">{{index+1}}.{{ post.title }}
+    <h2 [ngStyle]="(first || last) &&{'color': 'purple'}">{{post.id}}.{{ post.title }}
         </h2>
         <p>{{ post.content.slice(0,100) }}</p>
         <div class="buttons-cont">
@@ -7,8 +7,12 @@
             <button class="hits-button">{{ post.hits }}</button>
         </div>
         <div class="delete-button-container">
-            <button class="delete-button" (click)="handleDelete()">Delete</button>
             <button class="liked-button" (click)="handleLikeButton()">Like</button>
+            <ng-container *ngIf="!isDetailView">
+                <button class="expand-button" (click)="handleShowDetails()">Expand+</button>
+                <button class="delete-button" (click)="handleDelete()">Delete</button>
+
+            </ng-container>
         </div>
     </div>
 

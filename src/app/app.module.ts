@@ -8,6 +8,8 @@ import { ProductsComponent } from './products/products/products.component';
 import { EachPostComponent } from './MainPosts/each-post/each-post.component';
 import { AllPostsComponent } from './MainPosts/all-posts/all-posts.component';
 import { LikedPostsComponent } from './liked-posts/liked-posts.component';
+import { PostDetailsComponent } from './MainPosts/post-details/post-details.component';
+import { UserFormComponent } from './MainPosts/user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { LikedPostsComponent } from './liked-posts/liked-posts.component';
     EachPostComponent,
     AllPostsComponent,
     LikedPostsComponent,
+    PostDetailsComponent,
+    UserFormComponent,
     
   ],
   imports: [
